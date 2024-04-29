@@ -1,15 +1,17 @@
 import Piece from "./piece.ts"
+import Chess from "./chess.ts"
 
 class Knight extends Piece {
-    static moves = [[1, -2], [2, -1], [2, 1], [1, 2], [-1, 2], [-2, 1], [-2, -1], [-1, -2]]
+    static readonly moves = [[1, -2], [2, -1], [2, 1], [1, 2], [-1, 2], [-2, 1], [-2, -1], [-1, -2]]
 
-    calculateMoves(board: Piece[][]): Position[] {
+    calculateMoves(board: Chess.Square[][]): Position[] {
         let possibleMoves = []
 
         for (const move of Knight.moves) {
-            const newLoc = {r: this.location.r + move[0], c: this.location.c + move[1]}
-            if (board[newLoc.r][newLoc.c] === null) {
-                possibleMoves.push(newLoc)
+            const newPos = {r: this.pos.r + move[0], c: this.pos.c + move[1]}
+
+            if (board[newPos.r][newPos.c] == Chess.Square.Empty) {
+                possibleMoves.push(newPos)
             }
         }
 

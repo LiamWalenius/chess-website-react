@@ -2,18 +2,18 @@ import Piece from "./piece.ts"
 import Chess from "./chess.ts"
 
 class Bishop extends Piece {
-    static dirs = [[-1, -1], [1, -1], [1, 1], [-1, 1]]
+    static readonly dirs = [[-1, -1], [1, -1], [1, 1], [-1, 1]]
 
-    calculateMoves(board: Piece[][]): Position[] {
+    calculateMoves(board: Chess.Square[][]): Position[] {
         let possibleMoves = []
 
         for (const dir of Bishop.dirs) {
-            for (let pos = this.location; pos.r < Chess.size && pos.c < Chess.size; pos.r += dir[0], pos.c += dir[1]) {
-                if (board[pos.r][pos.c] !== null) {
+            for (let newPos = this.pos; newPos.r < Chess.size && newPos.c < Chess.size; newPos.r += dir[0], newPos.c += dir[1]) {
+                if (board[newPos.r][newPos.c] == Chess.Square.Occupied) {
                     break
                 }
 
-                possibleMoves.push(pos)
+                possibleMoves.push(newPos)
             }
         }
 
