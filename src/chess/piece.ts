@@ -1,10 +1,11 @@
 abstract class Piece {
-    location: Point
-    abstract calculateMoves(board: Piece[][]): Point[];
+    location: Position
 
-    protected constructor(location: Point) {
+    constructor(location: Position) {
         this.location = location
     }
+
+    abstract calculateMoves(board: Piece[][]): Position[]
 }
 
 export default Piece
