@@ -1,16 +1,13 @@
 import './App.css'
-import Button from "./components/Button.tsx"
-import Chess from "./chess/chess.ts"
+import Fortnite from "./components/Fortnite.tsx"
 
 function App() {
-    const chess = new Chess(3)
-    console.log(chess.test)
-
-    return (
-        <div className="App">
-            <Button onClick={() => console.log('bruh')}>bruh</Button>
-        </div>
-    )
+  return (
+    <div className="App">
+        <Fortnite/>
+        <button className="App-button">Some cool things will happen when you click me!</button> {/* Adding a button */}
+    </div>
+  )
 }
 
 export default App
