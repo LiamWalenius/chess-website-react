@@ -1,5 +1,5 @@
 import Piece from "./piece.ts"
-import Knight from "./knight.ts"
+import Horse from "./horse.ts"
 import Rook from "./rook.ts"
 import Bishop from "./bishop.ts"
 import Queen from "./queen.ts"
@@ -33,12 +33,12 @@ class Chess {
         }
 
         addPiece(new Rook({r: 0, c: 0}, Piece.Team.Black))
-        addPiece(new Knight({r: 0, c: 1}, Piece.Team.Black))
+        addPiece(new Horse({r: 0, c: 1}, Piece.Team.Black))
         addPiece(new Bishop({r: 0, c: 2}, Piece.Team.Black))
         addPiece(new Queen({r: 0, c: 3}, Piece.Team.Black))
         addPiece(new King({r: 0, c: 4}, Piece.Team.Black))
         addPiece(new Bishop({r: 0, c: 5}, Piece.Team.Black))
-        addPiece(new Knight({r: 0, c: 6}, Piece.Team.Black))
+        addPiece(new Horse({r: 0, c: 6}, Piece.Team.Black))
         addPiece(new Rook({r: 0, c: 7}, Piece.Team.Black))
 
         for (let i = 0; i < Chess.size; i++) {
@@ -47,12 +47,12 @@ class Chess {
         }
 
         addPiece(new Rook({r: 7, c: 0}, Piece.Team.White))
-        addPiece(new Knight({r: 7, c: 1}, Piece.Team.White))
+        addPiece(new Horse({r: 7, c: 1}, Piece.Team.White))
         addPiece(new Bishop({r: 7, c: 2}, Piece.Team.White))
         addPiece(new Queen({r: 7, c: 3}, Piece.Team.White))
         addPiece(new King({r: 7, c: 4}, Piece.Team.White))
         addPiece(new Bishop({r: 7, c: 5}, Piece.Team.White))
-        addPiece(new Knight({r: 7, c: 6}, Piece.Team.White))
+        addPiece(new Horse({r: 7, c: 6}, Piece.Team.White))
         addPiece(new Rook({r: 7, c: 7}, Piece.Team.White))
     }
 }

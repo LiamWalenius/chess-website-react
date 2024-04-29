@@ -1,23 +1,8 @@
-import Piece from "./piece.ts"
-import Chess from "./chess.ts"
+import LinearMovePiece from "./linear-move-piece.ts"
 
-class Bishop extends Piece {
-    static readonly dirs = [[-1, -1], [1, -1], [1, 1], [-1, 1]]
-
-    calculateMoves(board: Chess.Square[][]): Position[] {
-        let possibleMoves = []
-
-        for (const dir of Bishop.dirs) {
-            for (let newPos = this.pos; newPos.r < Chess.size && newPos.c < Chess.size; newPos.r += dir[0], newPos.c += dir[1]) {
-                if (board[newPos.r][newPos.c] == Chess.Square.Occupied) {
-                    break
-                }
-
-                possibleMoves.push(newPos)
-            }
-        }
-
-        return possibleMoves
+class Bishop extends LinearMovePiece {
+    getDirs(): Position[] {
+        return [{r: -1, c: -1}, {r: 1, c: -1}, {r: 1, c: 1}, {r: -1, c: 1}]
     }
 }
 
