@@ -1,5 +1,5 @@
 function Fortnite(){
-    return <p>Fortnite battle pass</p>
+    return <p>Fortnite Battle Pass...</p>
 }
 
 export default Fortnite
