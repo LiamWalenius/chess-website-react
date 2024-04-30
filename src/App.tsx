@@ -1,6 +1,6 @@
 import './App.css'
-import Button from "./components/Button.tsx"
-import {useState} from "react"
+import Button from "./components"
+import { useState } from "react"
 
 function App() {
     const [str, setStr] = useState<string>("a")
