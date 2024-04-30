@@ -4,12 +4,12 @@ import Chess from "./chess.ts"
 abstract class LinearMovePiece extends Piece {
     abstract getDirs(): Position[]
 
-    calculateMoves(board: Chess.Square[][]): Position[] {
+    override calculateMoves(board: Chess.Board): Position[] {
         let possibleMoves = []
 
         for (const dir of this.getDirs()) {
-            for (let newPos = this.pos; Chess.posInBoard(newPos); newPos.r += dir.r, newPos.c += dir.c) {
-                if (!board[newPos.r][newPos.c].isEmpty()) {
+            for (let newPos = this.pos; board.posInBoard(newPos); newPos.r += dir.r, newPos.c += dir.c) {
+                if (!board.squareAt(newPos).isEmpty()) {
                     break
                 }
 

@@ -1,11 +1,16 @@
 import './App.css'
+import Button from "./components/Button.tsx"
+import {useState} from "react"
 
 function App() {
-  return (
-    <div className="App">
-        <button className="App-button">Some cool things will happen when you click me!</button> {/* Adding a button */}
-    </div>
-  )
+    const [str, setStr] = useState<string>("a")
+
+    return (
+        <div className="App">
+            <Button onClick={() => setStr(str + "a")}>add 'a'</Button>
+            <label>{str}</label>
+        </div>
+    )
 }
 
 export default App

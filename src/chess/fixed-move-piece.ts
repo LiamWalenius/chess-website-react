@@ -4,17 +4,17 @@ import Chess from "./chess.ts"
 abstract class FixedMovePiece extends Piece {
     abstract getMoves(): Position[]
 
-    calculateMoves(board: Chess.Square[][]): Position[] {
+    override calculateMoves(board: Chess.Board): Position[] {
         let possibleMoves = []
 
         for (const move of this.getMoves()) {
             const newPos = {r: this.pos.r + move.r, c: this.pos.c + move.c}
 
-            if (!Chess.posInBoard(newPos)) {
+            if (!board.posInBoard(newPos)) {
                 continue
             }
 
-            if (board[newPos.r][newPos.c].isEmpty()) {
+            if (board.squareAt(newPos).isEmpty()) {
                 possibleMoves.push(newPos)
             }
         }

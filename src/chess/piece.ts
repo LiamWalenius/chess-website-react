@@ -2,21 +2,14 @@ import Chess from "./chess.ts"
 
 abstract class Piece {
     pos: Position
-    team: Piece.Team
+    team: Chess.Team
 
-    constructor(location: Position, team: Piece.Team) {
-        this.pos = location
+    constructor(pos: Position, team: Chess.Team) {
+        this.pos = pos
         this.team = team
     }
 
-    abstract calculateMoves(board: Chess.Square[][]): Position[]
-}
-
-namespace Piece {
-    export enum Team {
-        White,
-        Black
-    }
+    abstract calculateMoves(board: Chess.Board): Position[]
 }
 
 export default Piece
