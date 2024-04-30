@@ -8,8 +8,8 @@ abstract class LinearMovePiece extends Piece {
         let possibleMoves = []
 
         for (const dir of this.getDirs()) {
-            for (let newPos = this.pos; newPos.r < Chess.size && newPos.c < Chess.size; newPos.r += dir.r, newPos.c += dir.c) {
-                if (board[newPos.r][newPos.c] == Chess.Square.Occupied) {
+            for (let newPos = this.pos; Chess.posInBoard(newPos); newPos.r += dir.r, newPos.c += dir.c) {
+                if (!board[newPos.r][newPos.c].isEmpty()) {
                     break
                 }
 
