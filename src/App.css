@@ -33,3 +33,92 @@ a, button {
 a:hover, button:hover {
     background-color: #003569;
 }
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+}
+
+#chessboard {
+    display: grid;
+    grid-template-columns: repeat(8, 80px);
+    grid-template-rows: repeat(8, 80px);
+    border: 5px solid #333;
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.2);
+}
+
+.cell {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.cell:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.white {
+    background-color: #f0d9b5;
+}
+
+.black {
+    background-color: #b58863;
+}
+
+.selected {
+    border: 3px solid red;
+    background-color: #f77f00;
+}
+
+@media (max-width: 600px) {
+    #chessboard {
+        grid-template-columns: repeat(8, 50px);
+        grid-template-rows: repeat(8, 50px);
+    }
+    .cell {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a1a;
+    }
+
+    #chessboard {
+        border: 5px solid #ccc;
+        box-shadow: 0 0 100px rgba(255,255,255,0.2);
+    }
+
+    .cell {
+        color: #f5f5f5;
+    }
+
+    .cell:hover {
+        box-shadow: 0 4px 6px rgba(255,255,255,0.2);
+    }
+
+    .white {
+        background-color: #606060;
+    }
+
+    .black {
+        background-color: #303030;
+    }
+
+    .selected {
+        border-color: #ff4500;
+        background-color: #ff4500;
+    }
+}
