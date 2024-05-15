@@ -7,10 +7,10 @@ import King from "./king.ts"
 import Pawn from "./pawn.ts"
 
 class Chess {
-    board: Chess.Board = new Chess.Board()
-    pieces: Set<Piece> = new Set<Piece>()
+    board = new Chess.Board()
+    pieces = new Set<Piece>()
     selectedPiece: Piece | null = null
-    turn: Chess.Team = Chess.Team.White
+    turn = Chess.Team.White
 
     constructor() {
         const addPiece = (piece: Piece) => {
@@ -57,6 +57,26 @@ class Chess {
 
         this.board.squareAt(this.selectedPiece.pos).piece = null
         this.board.squareAt(pos).piece = this.selectedPiece
+        this.selectedPiece.pos = pos
+
+        this.endTurn()
+    }
+
+    endTurn(): void {
+        this.turn = (this.turn + 1) % 2
+
+        for (const piece of this.pieces) {
+            for (const move of piece.calculateMoves(this.board)) {
+                switch (piece.team) {
+                    case Chess.Team.White:
+                        this.board.squareAt(move).attackedByWhite = true
+                        break
+                    case Chess.Team.Black:
+                        this.board.squareAt(move).attackedByBlack = true
+                        break
+                }
+            }
+        }
     }
 }
 
