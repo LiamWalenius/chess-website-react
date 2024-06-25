@@ -9,7 +9,7 @@ abstract class LinearMovePiece extends Piece {
 
         for (const dir of this.getDirs()) {
             for (let newPos = this.pos; board.posInBoard(newPos); newPos.r += dir.r, newPos.c += dir.c) {
-                if (!board.squareAt(newPos).isEmpty()) {
+                if (!board.squareAt(newPos).piece === null) {
                     break
                 }
 

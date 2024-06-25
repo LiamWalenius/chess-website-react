@@ -39,11 +39,13 @@ class Chess {
     }
 
     selectSquare(pos: Position): void {
-        if (this.board.squareAt(pos).isEmpty()) {
+        const piece = this.board.squareAt(pos).piece
+
+        if (piece === null) {
             return
         }
 
-        this.selectedPiece = this.board.squareAt(pos).piece
+        this.selectedPiece = piece
     }
 
     moveSelectedPiece(pos: Position): void {
@@ -51,8 +53,10 @@ class Chess {
             return
         }
 
-        if (!this.board.squareAt(pos).isEmpty()) {
-            this.pieces.delete(<Piece>this.board.squareAt(pos).piece)
+        const piece = this.board.squareAt(pos).piece
+
+        if (piece !== null) {
+            this.pieces.delete(piece)
         }
 
         this.board.squareAt(this.selectedPiece.pos).piece = null
@@ -87,13 +91,9 @@ namespace Chess {
     }
 
     class Square {
-        attackedByWhite: boolean = false
-        attackedByBlack: boolean = false
+        attackedByWhite = false
+        attackedByBlack = false
         piece: Piece | null = null
-
-        isEmpty(): boolean {
-            return this.piece === null
-        }
     }
 
     export class Board {

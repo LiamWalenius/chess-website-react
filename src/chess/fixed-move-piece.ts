@@ -14,7 +14,7 @@ abstract class FixedMovePiece extends Piece {
                 continue
             }
 
-            if (board.squareAt(newPos).isEmpty()) {
+            if (board.squareAt(newPos).piece === null) {
                 possibleMoves.push(newPos)
             }
         }
