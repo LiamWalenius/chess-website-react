@@ -38,8 +38,37 @@ class Chess {
         }
     }
 
-    selectSquare(pos: Position): void {
-        this.selectedPiece = this.board.squareAt(pos).piece
+    indexToPosition(ind: number): Position {
+        const r = Math.floor(ind / this.board.size)
+        const c = ind % this.board.size
+
+        return {r, c}
+    }
+
+    selectSquare(ind: number): void {
+        const pos = this.indexToPosition(ind)
+        const piece = this.board.squareAt(pos).piece
+
+        if (this.selectedPiece === null) {
+            if (piece === null) {
+                return
+            }
+            if (piece.team === this.turn) {
+                this.selectedPiece = piece
+            }
+        }
+        else {
+            if (piece === null || piece.team !== this.turn) {
+                for (const move of this.selectedPiece.calculateMoves(this.board)) {
+                    if (move.r == pos.r && move.c == pos.c) {
+                        this.moveSelectedPiece(pos)
+                    }
+                }
+            }
+            else {
+                this.selectedPiece = piece
+            }
+        }
     }
 
     moveSelectedPiece(pos: Position): void {
@@ -62,6 +91,7 @@ class Chess {
 
     endTurn(): void {
         this.turn = (this.turn + 1) % 2
+        this.selectedPiece = null
 
         for (const piece of this.pieces) {
             for (const move of piece.calculateMoves(this.board)) {
@@ -74,6 +104,21 @@ class Chess {
                         break
                 }
             }
+        }
+    }
+
+    printBoard(): void {
+        for (let r = 0; r < this.board.size; r++) {
+            let line = ''
+
+            for (let c = 0; c < this.board.size; c++) {
+                const piece = this.board.squareAt({r, c}).piece
+                const symbol = (piece !== null) ? piece.getSymbol() : 'o'
+                line += symbol
+
+            }
+
+            console.log(line)
         }
     }
 }

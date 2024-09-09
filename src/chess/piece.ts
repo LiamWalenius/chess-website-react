@@ -10,6 +10,8 @@ abstract class Piece {
     }
 
     abstract calculateMoves(board: Chess.Board): Position[]
+
+    abstract getSymbol(): string
 }
 
 export default Piece

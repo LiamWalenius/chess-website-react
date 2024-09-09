@@ -7,6 +7,10 @@ class Queen extends LinearMovePiece {
             {r: -1, c: -1}, {r: 1, c: -1}, {r: 1, c: 1}, {r: -1, c: 1}
         ]
     }
+
+    override getSymbol(): string {
+        return 'Q'
+    }
 }
 
 export default Queen

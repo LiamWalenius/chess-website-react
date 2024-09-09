@@ -7,6 +7,10 @@ class Horse extends FixedMovePiece {
             {r: -1, c: 2}, {r: -2, c: 1}, {r: -2, c: -1}, {r: -1, c: -2}
         ]
     }
+
+    override getSymbol(): string {
+        return 'N'
+    }
 }
 
 export default Horse

@@ -23,6 +23,10 @@ class King extends FixedMovePiece {
 
         return possibleMoves
     }
+
+    override getSymbol(): string {
+        return 'K'
+    }
 }
 
 export default King
