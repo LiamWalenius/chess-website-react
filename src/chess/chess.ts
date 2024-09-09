@@ -39,13 +39,7 @@ class Chess {
     }
 
     selectSquare(pos: Position): void {
-        const piece = this.board.squareAt(pos).piece
-
-        if (piece === null) {
-            return
-        }
-
-        this.selectedPiece = piece
+        this.selectedPiece = this.board.squareAt(pos).piece
     }
 
     moveSelectedPiece(pos: Position): void {

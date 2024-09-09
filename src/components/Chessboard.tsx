@@ -1,3 +1,5 @@
+import { Square } from '.'
+
 const Chessboard = () => {
     const size = 8;
     let cells = [];
@@ -8,10 +10,7 @@ const Chessboard = () => {
         const isBlack = (x + y) % 2 === 1;
 
         cells.push(
-            <div
-                key={i}
-                className={`cell ${isBlack ? 'black' : 'white'}`}
-            />
+            Square({key: i, isBlack})
         );
     }
 

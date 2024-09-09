@@ -27,10 +27,6 @@ a, button {
     text-decoration: none;
 }
 
-a:hover, button:hover {
-    background-color: #003569;
-}
-
 body {
     display: flex;
     justify-content: center;

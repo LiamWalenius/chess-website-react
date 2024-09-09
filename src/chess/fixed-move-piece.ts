@@ -14,7 +14,9 @@ abstract class FixedMovePiece extends Piece {
                 continue
             }
 
-            if (board.squareAt(newPos).piece === null) {
+            const piece = board.squareAt(newPos).piece
+
+            if (piece === null || this.team != piece.team) {
                 possibleMoves.push(newPos)
             }
         }
