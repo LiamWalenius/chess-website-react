@@ -20,14 +20,11 @@ body {
 }
 
 a, button {
-    background-color: #0061a8;
-    color: #ffffff;
-    padding: 10px 20px;
-    margin-top: 20px;
+    width: 80px;
+    height: 80px;
+    background-color: #0062a800;
     border: none;
-    border-radius: 100px;
     text-decoration: none;
-    transition: background-color 0.3s ease;
 }
 
 a:hover, button:hover {
