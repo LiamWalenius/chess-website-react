@@ -38,15 +38,8 @@ class Chess {
         }
     }
 
-    indexToPosition(ind: number): Position {
-        const r = Math.floor(ind / this.board.size)
-        const c = ind % this.board.size
-
-        return {r, c}
-    }
-
     selectSquare(ind: number): void {
-        const pos = this.indexToPosition(ind)
+        const pos = this.board.indexToPosition(ind)
         const piece = this.board.squareAt(pos).piece
 
         if (this.selectedPiece === null) {
@@ -107,19 +100,16 @@ class Chess {
         }
     }
 
-    printBoard(): void {
+    getCopyOfBoard(): Chess.Board {
+        const newBoard = new Chess.Board()
+
         for (let r = 0; r < this.board.size; r++) {
-            let line = ''
-
             for (let c = 0; c < this.board.size; c++) {
-                const piece = this.board.squareAt({r, c}).piece
-                const symbol = (piece !== null) ? piece.getSymbol() : 'o'
-                line += symbol
-
+                newBoard.board[r][c] = this.board.board[r][c]
             }
-
-            console.log(line)
         }
+
+        return newBoard
     }
 }
 
@@ -157,6 +147,13 @@ namespace Chess {
 
         posInBoard(pos: Position): boolean {
             return pos.r >= 0 && pos.r < this.size && pos.c >= 0 && pos.c < this.size
+        }
+        
+        indexToPosition(ind: number): Position {
+            const r = Math.floor(ind / this.size)
+            const c = ind % this.size
+
+            return {r, c}
         }
     }
 }

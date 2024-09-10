@@ -8,7 +8,7 @@ abstract class LinearMovePiece extends Piece {
         let possibleMoves = []
 
         for (const dir of this.getDirs()) {
-            for (let newPos = this.pos; board.posInBoard(newPos); newPos.r += dir.r, newPos.c += dir.c) {
+            for (let newPos = {...this.pos}; board.posInBoard(newPos); newPos.r += dir.r, newPos.c += dir.c) {
                 const piece = board.squareAt(newPos).piece
 
                 if (piece !== null) {

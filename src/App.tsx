@@ -1,10 +1,10 @@
 import './App.css'
-import {Chessboard} from "./components"
+import { ChessGame } from "./components"
 
 function App() {
     return (
         <div className="App">
-            <Chessboard/>
+            <ChessGame/>
         </div>
     )
 }
