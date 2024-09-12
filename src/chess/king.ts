@@ -1,5 +1,5 @@
-import FixedMovePiece from "./fixed-move-piece.ts"
-import Chess from "./chess.ts"
+import FixedMovePiece from './fixed-move-piece.ts'
+import { Chess, Position } from './index.ts'
 
 class King extends FixedMovePiece {
     override getMoves(): Position[] {
@@ -13,10 +13,9 @@ class King extends FixedMovePiece {
         let possibleMoves = []
 
         for (const newPos of super.calculateMoves(board)) {
-            if (
-                (this.team == Chess.Team.White && !board.squareAt(newPos).attackedByBlack)
-                || (this.team == Chess.Team.Black && !board.squareAt(newPos).attackedByWhite)
-            ) {
+            const square = board.squareAt(newPos)
+
+            if ((this.team == Chess.Team.White && !square.attackedByBlack) || (this.team == Chess.Team.Black && !square.attackedByWhite)) {
                 possibleMoves.push(newPos)
             }
         }

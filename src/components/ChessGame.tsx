@@ -1,4 +1,4 @@
-import {ChessBoard} from '.'
+import { ChessBoard } from './index.ts'
 import { Chess } from '../chess'
 import { useState } from 'react'
 

@@ -1,10 +1,11 @@
-import Piece from "./piece.ts"
-import Horse from "./horse.ts"
-import Rook from "./rook.ts"
-import Bishop from "./bishop.ts"
-import Queen from "./queen.ts"
-import King from "./king.ts"
-import Pawn from "./pawn.ts"
+import Piece from './piece.ts'
+import Knight from './knight.ts'
+import Rook from './rook.ts'
+import Bishop from './bishop.ts'
+import Queen from './queen.ts'
+import King from './king.ts'
+import Pawn from './pawn.ts'
+import { Position } from './index.ts'
 
 class Chess {
     board = new Chess.Board()
@@ -20,12 +21,12 @@ class Chess {
 
         const addPieceRow = (team: Chess.Team, row: number) => {
             addPiece(new Rook({r: row, c: 0}, team))
-            addPiece(new Horse({r: row, c: 1}, team))
+            addPiece(new Knight({r: row, c: 1}, team))
             addPiece(new Bishop({r: row, c: 2}, team))
             addPiece(new Queen({r: row, c: 3}, team))
             addPiece(new King({r: row, c: 4}, team))
             addPiece(new Bishop({r: row, c: 5}, team))
-            addPiece(new Horse({r: row, c: 6}, team))
+            addPiece(new Knight({r: row, c: 6}, team))
             addPiece(new Rook({r: row, c: 7}, team))
         }
 
@@ -48,18 +49,21 @@ class Chess {
             }
             if (piece.team === this.turn) {
                 this.selectedPiece = piece
+                console.log(this.selectedPiece.calculateMoves(this.board))
             }
         }
         else {
             if (piece === null || piece.team !== this.turn) {
                 for (const move of this.selectedPiece.calculateMoves(this.board)) {
-                    if (move.r == pos.r && move.c == pos.c) {
+                    if (Position.areEqual(pos, move)) {
                         this.moveSelectedPiece(pos)
+                        return
                     }
                 }
             }
             else {
                 this.selectedPiece = piece
+                console.log(this.selectedPiece.calculateMoves(this.board))
             }
         }
     }

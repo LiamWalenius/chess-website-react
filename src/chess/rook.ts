@@ -1,4 +1,5 @@
-import LinearMovePiece from "./linear-move-piece.ts"
+import LinearMovePiece from './linear-move-piece.ts'
+import { Position } from './index.ts'
 
 class Rook extends LinearMovePiece {
     override getDirs(): Position[] {

@@ -1,5 +1,5 @@
-import Piece from "./piece.ts"
-import Chess from "./chess.ts"
+import Piece from './piece.ts'
+import { Chess, Position } from './index.ts'
 
 abstract class FixedMovePiece extends Piece {
     abstract getMoves(): Position[]

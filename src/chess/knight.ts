@@ -1,6 +1,7 @@
-import FixedMovePiece from "./fixed-move-piece.ts"
+import FixedMovePiece from './fixed-move-piece.ts'
+import { Position } from './index.ts'
 
-class Horse extends FixedMovePiece {
+class Knight extends FixedMovePiece {
     override getMoves(): Position[] {
         return [
             {r: 1, c: -2}, {r: 2, c: -1}, {r: 2, c: 1}, {r: 1, c: 2},
@@ -13,4 +14,4 @@ class Horse extends FixedMovePiece {
     }
 }
 
-export default Horse
+export default Knight

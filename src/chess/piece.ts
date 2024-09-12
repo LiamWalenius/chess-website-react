@@ -1,4 +1,4 @@
-import Chess from "./chess.ts"
+import { Chess, Position } from './index.ts'
 
 abstract class Piece {
     pos: Position
