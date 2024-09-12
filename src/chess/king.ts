@@ -10,17 +10,12 @@ class King extends FixedMovePiece {
     }
 
     override calculateMoves(board: Chess.Board): Position[] {
-        let possibleMoves = []
-
-        for (const newPos of super.calculateMoves(board)) {
-            const square = board.squareAt(newPos)
-
-            if ((this.team == Chess.Team.White && !square.attackedByBlack) || (this.team == Chess.Team.Black && !square.attackedByWhite)) {
-                possibleMoves.push(newPos)
-            }
+        const canMoveToPos = (pos: Position): boolean => {
+            const square = board.squareAt(pos)
+            return (this.team == Chess.Team.White && !square.attackedByBlack) || (this.team == Chess.Team.Black && !square.attackedByWhite)
         }
 
-        return possibleMoves
+        return super.calculateMoves(board).filter(canMoveToPos)
     }
 
     override getSymbol(): string {
