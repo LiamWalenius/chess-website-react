@@ -1,6 +1,6 @@
 import { Button } from '.'
 
-interface Props {
+type Props = {
     key: number
     isBlack: boolean
     piece: string

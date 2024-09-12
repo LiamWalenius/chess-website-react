@@ -1,7 +1,7 @@
 import { Square } from './index.ts'
 import { Chess } from '../chess'
 
-interface Props {
+type Props = {
     board: Chess.Board
     onClick: (ind: number) => void
 }
