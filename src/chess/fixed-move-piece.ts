@@ -2,12 +2,12 @@ import Piece from './piece.ts'
 import { Chess, Position } from './index.ts'
 
 abstract class FixedMovePiece extends Piece {
-    abstract getMoves(): Position[]
+    abstract getOffsets(): Position[]
 
     override calculateMoves(board: Chess.Board): Position[] {
         let possibleMoves = []
 
-        for (const move of this.getMoves()) {
+        for (const move of this.getOffsets()) {
             const newPos = {r: this.pos.r + move.r, c: this.pos.c + move.c}
 
             if (!board.posInBoard(newPos)) {

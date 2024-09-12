@@ -37,6 +37,10 @@ class Chess {
             addPiece(new Pawn({r: 1, c: i}, Chess.Team.Black))
             addPiece(new Pawn({r: 6, c: i}, Chess.Team.White))
         }
+
+        for (const piece of this.pieces) {
+            piece.moves = piece.calculateMoves(this.board)
+        }
     }
 
     selectSquare(ind: number): void {
@@ -49,21 +53,19 @@ class Chess {
             }
             if (piece.team === this.turn) {
                 this.selectedPiece = piece
-                console.log(this.selectedPiece.calculateMoves(this.board))
+                console.log(this.selectedPiece.moves)
             }
         }
         else {
             if (piece === null || piece.team !== this.turn) {
-                for (const move of this.selectedPiece.calculateMoves(this.board)) {
-                    if (Position.areEqual(pos, move)) {
-                        this.moveSelectedPiece(pos)
-                        return
-                    }
+                if (this.selectedPiece.moves.some((p) => Position.areEqual(p, pos))) {
+                    this.moveSelectedPiece(pos)
+                    return
                 }
             }
             else {
                 this.selectedPiece = piece
-                console.log(this.selectedPiece.calculateMoves(this.board))
+                console.log(this.selectedPiece.moves)
             }
         }
     }
@@ -91,7 +93,9 @@ class Chess {
         this.selectedPiece = null
 
         for (const piece of this.pieces) {
-            for (const move of piece.calculateMoves(this.board)) {
+            piece.moves = piece.calculateMoves(this.board)
+
+            for (const move of piece.moves) {
                 switch (piece.team) {
                     case Chess.Team.White:
                         this.board.squareAt(move).attackedByWhite = true

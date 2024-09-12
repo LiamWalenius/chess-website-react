@@ -3,6 +3,7 @@ import { Chess, Position } from './index.ts'
 abstract class Piece {
     pos: Position
     team: Chess.Team
+    moves: Position[] = []
 
     constructor(pos: Position, team: Chess.Team) {
         this.pos = pos

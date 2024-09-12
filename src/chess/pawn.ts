@@ -4,20 +4,20 @@ import { Chess, Position } from './index.ts'
 class Pawn extends FixedMovePiece {
     hasMoved: boolean = false
 
-    override getMoves(): Position[] {
-        let moves = [{r: -1, c: 0}]
+    override getOffsets(): Position[] {
+        let offsets = [{r: -1, c: 0}]
 
         if (!this.hasMoved) {
-            moves.push({r: -2, c: 0})
+            offsets.push({r: -2, c: 0})
         }
 
         if (this.team === Chess.Team.Black) {
-            for (let move of moves) {
-                move.r *= -1
+            for (let offset of offsets) {
+                offset.r *= -1
             }
         }
 
-        return moves
+        return offsets
     }
 
     override calculateMoves(board: Chess.Board): Position[] {
