@@ -4,16 +4,16 @@ type Props = {
     key: number
     isBlack: boolean
     piece: string
-    onClick: (ind: number) => void
+    selectSquare: (ind: number) => void
 }
 
-const Square = ({key, isBlack, piece, onClick}: Props) => {
+function Square ({key, isBlack, piece, selectSquare}: Props) {
     return (
         <div
             key={key}
             className={`cell ${isBlack ? 'black' : 'white'}`}
         >
-            {<Button onClick={() => onClick(key)}>{piece}</Button>}
+            {<Button onClick={() => selectSquare(key)}>{piece}</Button>}
         </div>
     )
 }

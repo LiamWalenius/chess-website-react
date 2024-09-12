@@ -1,9 +1,9 @@
 type Props = {
-    children: string
     onClick: () => void
+    children: string
 }
 
-function Button({children, onClick}: Props) {
+function Button({onClick, children}: Props) {
     return <button onClick={onClick}>{children}</button>
 }
 

@@ -2,7 +2,7 @@ import {ChessBoard} from '.'
 import { Chess } from '../chess'
 import { useState } from 'react'
 
-const ChessGame = () => {
+function ChessGame() {
     const [chess] = useState(new Chess())
     const [board, setBoard] = useState(chess.board)
 
@@ -13,7 +13,7 @@ const ChessGame = () => {
 
     return (
         <div>
-            <ChessBoard board={board} onClick={selectSquare}></ChessBoard>
+            <ChessBoard board={board} selectSquare={selectSquare}></ChessBoard>
         </div>
     )
 }

@@ -3,10 +3,10 @@ import { Chess } from '../chess'
 
 type Props = {
     board: Chess.Board
-    onClick: (ind: number) => void
+    selectSquare: (ind: number) => void
 }
 
-const ChessBoard = ({board, onClick}: Props) => {
+function ChessBoard ({board, selectSquare}: Props) {
     const size = board.size
     let cells = []
 
@@ -19,7 +19,7 @@ const ChessBoard = ({board, onClick}: Props) => {
         const symbol = (piece !== null) ? piece.getSymbol() : ''
 
         cells.push(
-            Square({key: i, isBlack, piece: symbol, onClick})
+            Square({key: i, isBlack, piece: symbol, selectSquare})
         )
     }
 
