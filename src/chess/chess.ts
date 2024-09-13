@@ -84,6 +84,7 @@ class Chess {
         this.board.squareAt(this.selectedPiece.pos).piece = null
         this.board.squareAt(pos).piece = this.selectedPiece
         this.selectedPiece.pos = pos
+        this.selectedPiece.hasMoved = true
 
         this.endTurn()
     }

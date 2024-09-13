@@ -1,9 +1,7 @@
 import FixedMovePiece from './fixed-move-piece.ts'
-import { Chess, Position } from './index.ts'
+import {Chess, Position} from './index.ts'
 
 class Pawn extends FixedMovePiece {
-    hasMoved: boolean = false
-
     override getOffsets(): Position[] {
         let offsets = [{r: -1, c: 0}]
 
