@@ -1,5 +1,5 @@
 import './App.css'
-import { ChessGame } from "./components"
+import { ChessGame } from './components'
 
 function App() {
     return (
