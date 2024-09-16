@@ -1,6 +1,8 @@
+import React from 'react'
+
 type Props = {
     onClick: () => void
-    children: string
+    children: React.ReactElement
 }
 
 function Button({onClick, children}: Props) {

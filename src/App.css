@@ -72,6 +72,16 @@ body {
     background-color: #b58863;
 }
 
+.circle {
+    height: 30%;
+    width: 30%;
+    background-color: #1a1a1a50;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .selected {
     border: 3px solid red;
     background-color: #f77f00;

@@ -53,7 +53,6 @@ class Chess {
             }
             if (piece.team === this.turn) {
                 this.selectedPiece = piece
-                console.log(this.selectedPiece.moves)
             }
         }
         else {
@@ -120,6 +119,10 @@ class Chess {
 
         return newBoard
     }
+
+    getSelectedPieceMoves(): Position[] {
+        return (this.selectedPiece !== null) ? this.selectedPiece.moves : []
+    }
 }
 
 namespace Chess {
@@ -163,6 +166,10 @@ namespace Chess {
             const c = ind % this.size
 
             return {r, c}
+        }
+
+        positionToIndex(pos: Position): number {
+            return pos.r*this.size + pos.c
         }
     }
 }

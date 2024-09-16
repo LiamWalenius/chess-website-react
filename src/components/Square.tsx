@@ -3,17 +3,20 @@ import { Button } from './index.ts'
 type Props = {
     key: number
     isBlack: boolean
-    piece: string
+    symbol: string
+    isPossibleMove: boolean
     selectSquare: (ind: number) => void
 }
 
-function Square ({key, isBlack, piece, selectSquare}: Props) {
+function Square ({key, isBlack, symbol, isPossibleMove, selectSquare}: Props) {
+    const circle = isPossibleMove ? <div className="circle">{symbol}</div> : <></>
+
     return (
         <div
             key={key}
             className={`cell ${isBlack ? 'black' : 'white'}`}
         >
-            {<Button onClick={() => selectSquare(key)}>{piece}</Button>}
+            {<Button onClick={() => selectSquare(key)}>{circle}</Button>}
         </div>
     )
 }
